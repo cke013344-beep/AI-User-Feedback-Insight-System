@@ -1,0 +1,41 @@
+review_id,review,label
+001,"The app closes as soon as I open my saved trip. I have to start over each time.",BUG
+002,"Since the last update, the map takes forever to respond and sometimes stops moving entirely.",BUG
+003,"I can browse normally, but tapping Confirm just leaves the page spinning until I force quit.",BUG
+004,"Photos won't load on mobile data, even though they show up fine on Wi-Fi.",BUG
+005,"My grocery list disappears whenever I switch to another screen and come back.",BUG
+006,"The audio cuts out halfway through a lesson, then the player jumps back to the beginning.",BUG
+007,"Search worked yesterday; now every result opens a blank page.",BUG
+008,"The app gets stuck on the splash screen about one time in three.",BUG
+009,"I tried to upload the receipt twice, and both times the app sent me back to the home screen.",BUG
+010,"Notifications arrive, but opening one hangs the whole app for several seconds.",BUG
+011,"I changed phones and the sign-in code is being sent to a number I no longer have.",ACCOUNT
+012,"My password is accepted on the website, but the app keeps telling me I don't exist.",ACCOUNT
+013,"There doesn't seem to be a way to get back into my profile after I was signed out.",ACCOUNT
+014,"I made an account with Apple, and now the app has created a second empty profile for my email.",ACCOUNT
+015,"The reset link arrives, but it takes me to a page that says my session has expired.",ACCOUNT
+016,"I can't tell which email address this account is attached to, and none of my usual ones work.",ACCOUNT
+017,"Face ID stopped letting me in, and I can't find another sign-in option.",ACCOUNT
+018,"My family member invited me, but joining says I'm already registered under a different account.",ACCOUNT
+019,"Every few days it forgets who I am and asks me to verify the account again.",ACCOUNT
+020,"I need to change the phone number on my profile, but the old number is required to approve it.",ACCOUNT
+021,"I cancelled before the trial ended, yet this month's statement still includes the subscription.",PAYMENT
+022,"The receipt says I paid, but the premium features are still locked.",PAYMENT
+023,"I only meant to buy one month. The app renewed me for a year without making that clear.",PAYMENT
+024,"There are two identical charges from you on my card for the same order.",PAYMENT
+025,"I was promised a refund last week and the amount hasn't returned to my account.",PAYMENT
+026,"The price shown at checkout was lower than what appeared on my bank statement.",PAYMENT
+027,"My voucher was accepted, but I was billed the full amount anyway.",PAYMENT
+028,"I switched plans in the middle of the month and now both plans appear on the invoice.",PAYMENT
+029,"The payment page rejects my card even though my bank says it approved the transaction.",PAYMENT
+030,"I can't find where to stop the paid membership before it renews again.",PAYMENT
+031,"I often use this on the train. It would help if I could save a few lessons for offline use.",FEATURE_UX
+032,"Finding last week's report takes too many taps; could the recent items stay on the home screen?",FEATURE_UX
+033,"The text is tiny on my phone, and enlarging it in settings doesn't change the labels.",FEATURE_UX
+034,"I wish the calendar could start on Monday instead of making me scan from Sunday.",FEATURE_UX
+035,"It would be much easier to compare options if I could keep two of them open side by side.",FEATURE_UX
+036,"The colors are hard to distinguish outdoors. A higher-contrast theme would make this usable for me.",FEATURE_UX
+037,"I keep rebuilding the same meal plan every week; saving a reusable template would be great.",FEATURE_UX
+038,"Could you add a way to sort saved places by distance? I have a long list now.",FEATURE_UX
+039,"The buttons are crowded near the bottom edge, so I hit the wrong one when using my phone one-handed.",FEATURE_UX
+040,"I don't need another notification for every small change. Letting us choose which updates to hear about would help.",FEATURE_UX

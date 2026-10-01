@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="app-token" content="__APP_TOKEN__">
+<title>Feedback Studio · AI 用户反馈分析</title>
+<style>
+:root{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#203047;background:#f4f6fa;font-size:15px;--blue:#315bca;--muted:#68788e;--line:#e2e7ef}*{box-sizing:border-box}body{margin:0}button,input,textarea,select{font:inherit}button,a.button{cursor:pointer;border:1px solid #d6deea;border-radius:9px;padding:10px 15px;color:#344969;background:white;text-decoration:none;font-weight:600}button:hover{background:#eef3fb}button:disabled{opacity:.45;cursor:not-allowed}.primary{background:var(--blue)!important;border-color:var(--blue)!important;color:white!important}.quiet{padding:7px 10px}input,select,textarea{border:1px solid #ccd6e5;border-radius:9px;padding:10px;background:white;color:inherit}textarea{width:100%;resize:vertical;min-height:130px;line-height:1.6}input:focus,textarea:focus,select:focus,button:focus-visible{outline:3px solid #c8d9fd;outline-offset:1px}h1,h2,h3,p{margin-top:0}h1{font-size:28px;letter-spacing:-.5px;margin-bottom:10px}h2{font-size:18px;margin-bottom:16px}h3{font-size:15px;margin-bottom:10px}p{line-height:1.65}small,.muted{color:var(--muted)}.shell{display:grid;grid-template-columns:240px minmax(0,1fr);min-height:100vh}.sidebar{padding:28px 18px;border-right:1px solid var(--line);background:#fff}.brand{font-weight:800;letter-spacing:-.5px;font-size:21px}.brand span{color:var(--blue)}.project{font-size:12px;color:var(--muted);margin:8px 0 30px}.history-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.history{display:flex;flex-direction:column;gap:8px}.history button{text-align:left;font-weight:400;display:block;padding:12px;width:100%;font-size:13px}.history button.active{background:#edf2ff;border-color:#b9ccfa}.history strong,.history small{display:block;overflow-wrap:anywhere}.history small{margin-top:5px;line-height:1.4}.side-note{font-size:12px;line-height:1.7;margin-top:28px}.main{padding:30px 34px 60px;max-width:1450px;width:100%;margin:auto}.top{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;margin-bottom:25px}.status{font-size:12px;padding:8px 12px;background:#fff;border-radius:30px;border:1px solid var(--line);white-space:nowrap}.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#91a0b4;margin-right:6px}.ready .dot{background:#2e9869}.intro{margin:0;font-size:14px;color:var(--muted)}.card{background:white;border:1px solid var(--line);border-radius:14px;padding:23px;margin-bottom:20px;box-shadow:0 3px 15px #20364d03}.tabs{display:flex;gap:8px;margin-bottom:20px}.tabs button[aria-selected=true]{background:#edf2ff;color:var(--blue);border-color:#b9ccfa}.form-label{display:block;font-weight:600;margin-bottom:9px}.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:14px}.hint{font-size:12px;color:var(--muted);margin:12px 0 0;line-height:1.7}.file-box{padding:20px;border:1px dashed #bbcbe0;border-radius:10px;background:#f9fbff}.file-box input{border:0;background:transparent;max-width:100%;padding-left:0}.preview{margin-top:16px;padding:15px;border-radius:9px;background:#edf4ff;line-height:1.65;font-size:14px}.preview ul{padding-left:22px;max-height:110px;overflow:auto}.notice{padding:12px 16px;border-radius:9px;background:#fff5df;border:1px solid #f0dfb8;font-size:13px;line-height:1.6;margin-bottom:18px}.error-note{background:#fff0ef;border-color:#eac6c3}.job-head{display:flex;justify-content:space-between;align-items:flex-start;gap:15px}.job-head h2{margin-bottom:7px}.job-actions{display:flex;flex-wrap:wrap;gap:7px}.job-actions button{font-size:12px;padding:8px 10px}.progress{height:7px;background:#e8edf6;border-radius:10px;overflow:hidden;margin:18px 0 9px}.progress div{height:100%;background:var(--blue);transition:width .25s}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}.stat{border:1px solid var(--line);border-radius:10px;padding:15px}.stat strong{display:block;font-size:26px;margin:7px 0}.stat small{font-size:12px}.charts{display:grid;grid-template-columns:1fr 1.1fr 1fr;gap:25px;margin-top:26px}.bar-row{margin-bottom:12px}.bar-label{display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px;gap:6px}.track{height:7px;background:#edf0f6;border-radius:6px}.fill{height:100%;border-radius:6px;background:#7695df}.fill.high{background:#d46e65}.fill.medium{background:#dba453}.fill.low{background:#63a88c}.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:15px}.filters input{min-width:180px;flex:1}.filters select{font-size:13px;max-width:100%}.table-wrap{overflow:auto}table{border-collapse:collapse;width:100%;font-size:13px;text-align:left}th{color:var(--muted);font-weight:500;background:#f8fafe}th,td{padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top}tbody tr{cursor:pointer}tbody tr:hover,tbody tr.selected{background:#f3f7ff}.review-cell{min-width:190px;max-width:360px;line-height:1.55;overflow-wrap:anywhere}.id-cell{max-width:110px;overflow-wrap:anywhere}.pill{display:inline-block;border-radius:20px;padding:4px 8px;font-size:11px;white-space:nowrap;background:#eef2f8;color:#526680}.pill.high,.pill.invalid,.pill.failed,.pill.interrupted{background:#fff0ed;color:#b2554b}.pill.medium{background:#fff5e2;color:#a27729}.pill.low,.pill.success{background:#eaf6ef;color:#36825b}.pill.processing{background:#edf2ff;color:#315bca}.detail-review{background:#f8fafe;border-radius:10px;padding:15px;line-height:1.7;white-space:pre-wrap;overflow-wrap:anywhere}.comparison{display:grid;grid-template-columns:1fr 2fr;gap:15px;margin-top:18px}.comparison>div{border:1px solid var(--line);border-radius:10px;padding:18px}.baseline-value{font-size:20px;font-weight:700;margin-top:13px}.ai-value{font-weight:650;font-size:18px;margin-bottom:15px}.fields{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field small{display:block;margin-bottom:6px}.field{line-height:1.6;overflow-wrap:anywhere}.wide{grid-column:1/-1}.quote{border-left:3px solid #9bb4ee;padding-left:12px;color:#345079;white-space:pre-wrap}pre{white-space:pre-wrap;word-break:break-word;background:#f8fafe;padding:12px;border-radius:8px;font-size:12px}.empty{text-align:center;padding:35px 15px;color:var(--muted);line-height:1.8}.footer{font-size:12px;color:var(--muted);line-height:1.8}.hide,[hidden]{display:none!important}#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#21344f;color:white;padding:13px 20px;border-radius:10px;box-shadow:0 5px 24px #20304725;max-width:90vw;z-index:10;line-height:1.6}a{color:var(--blue)}
+@media(max-width:1050px){.shell{grid-template-columns:195px minmax(0,1fr)}.main{padding:26px 22px}.charts{grid-template-columns:1fr 1fr}.charts>div:last-child{grid-column:1/-1}.top{display:block}.status{display:inline-block;margin-top:13px}.stats{grid-template-columns:1fr 1fr}}@media(max-width:720px){.shell{display:block}.sidebar{border-right:0;border-bottom:1px solid var(--line);padding:18px}.project{margin-bottom:16px}.history{flex-direction:row;overflow:auto}.history button{min-width:180px;max-width:200px}.side-note{display:none}.main{padding:22px 15px}.card{padding:18px}.charts,.comparison,.fields{grid-template-columns:1fr}.charts>div:last-child{grid-column:auto}.job-head{display:block}.job-actions{margin-top:12px}.wide{grid-column:auto}h1{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="shell">
+<aside class="sidebar">
+<div class="brand">Feedback <span>Studio</span></div><div class="project">PE6201 · 个人项目 / 本地工作区</div>
+<div class="history-heading"><strong>分析历史</strong><button class="quiet" id="refresh-history" aria-label="刷新分析历史">刷新</button></div>
+<div class="history" id="history"><div class="muted">暂无分析记录</div></div>
+<p class="side-note">记录自动保存在这台电脑。<br>AI 分析时，评论会发送给所配置的模型服务。<br>实验数据与网页历史分开保存。</p>
+</aside>
+<main class="main">
+<header class="top"><div><h1>把用户反馈变成可行动的问题</h1><p class="intro">分类、严重程度、用户需求与原文依据，一起查看。</p></div><div class="status" id="connection"><span class="dot"></span><span id="connection-text">正在连接本地服务</span></div></header>
+<div class="notice" id="service-note" hidden></div>
+<section class="card">
+<div class="tabs" role="tablist" aria-label="输入方式"><button id="single-tab" role="tab" aria-selected="true" aria-controls="single-panel">单条评论</button><button id="batch-tab" role="tab" aria-selected="false" aria-controls="batch-panel">CSV 批量导入</button></div>
+<div id="single-panel" role="tabpanel" aria-labelledby="single-tab">
+<label class="form-label" for="review">英文 App 用户评论</label>
+<textarea id="review" maxlength="2000" placeholder="例如：I cancelled my subscription, but I was charged again."></textarea>
+<div class="actions"><button class="primary" id="analyse-single">开始 AI 分析</button><button id="rule-single">仅运行关键词分类</button><button id="use-example">填入示例</button><small id="character-count">0 / 2000</small></div>
+<p class="hint">AI 会调用一次模型，同时保留关键词分类，方便并排比较。分析成功后自动保存。</p>
+</div>
+<div id="batch-panel" role="tabpanel" aria-labelledby="batch-tab" hidden>
+<div class="file-box"><label class="form-label" for="csv-file">选择 UTF-8 编码的 CSV 文件</label><input type="file" id="csv-file" accept=".csv,text/csv"><p class="hint">必须包含 review 列，可增加 review_id 列。最多 500 条，每条最多 2000 字符，文件不超过 2 MB。</p><button class="quiet" id="download-template">下载 CSV 格式示例</button></div>
+<div class="preview" id="csv-preview" hidden></div>
+<div class="actions"><button class="primary" id="analyse-batch" disabled>确认并开始 AI 批量分析</button><button id="rule-batch" disabled>仅做关键词批量分类</button></div>
+<p class="hint">上传只预览，不调用 AI。确认开始后，每条调用一次；顺序处理，完成一条保存一条。暂停会等当前请求结束。</p>
+</div>
+</section>
+<section class="card" id="overview" hidden>
+<div class="job-head"><div><h2 id="job-title"></h2><small id="job-meta"></small></div><div class="job-actions"><button id="pause-job">暂停</button><button id="resume-job">继续待处理项</button><button id="retry-job">重试失败 / 中断项</button><button id="export-csv">导出 CSV</button><button id="export-json">导出 JSON</button></div></div>
+<div class="progress" role="progressbar" aria-label="分析进度" aria-valuemin="0" aria-valuemax="100" id="progress"><div id="progress-fill"></div></div><small id="progress-text"></small>
+<div class="stats"><div class="stat"><small>本次评论</small><strong id="stat-total">0</strong><small>只统计当前分析记录</small></div><div class="stat"><small>有效结果</small><strong id="stat-success">0</strong><small id="stat-failed"></small></div><div class="stat"><small>高严重程度</small><strong id="stat-high">0</strong><small>仅有效 AI 结果</small></div><div class="stat"><small>累计使用 Token</small><strong id="stat-tokens">0</strong><small id="token-breakdown"></small></div></div>
+<div class="charts"><div><h3>问题大类分布</h3><div id="category-bars"></div></div><div><h3>固定主题分布</h3><div id="topic-bars"></div></div><div><h3>严重程度分布</h3><div id="severity-bars"></div></div></div>
+<p class="hint" id="summary-note"></p>
+</section>
+<section class="card" id="results" hidden>
+<h2>评论与分析结果</h2>
+<div class="filters"><input id="filter-text" placeholder="搜索评论、需求或依据" aria-label="搜索评论、需求或依据"><select id="filter-category" aria-label="按问题大类筛选"><option value="">全部大类</option></select><select id="filter-topic" aria-label="按主题筛选"><option value="">全部主题</option></select><select id="filter-severity" aria-label="按严重程度筛选"><option value="">全部严重程度</option><option value="high">高</option><option value="medium">中</option><option value="low">低</option></select><select id="filter-status" aria-label="按状态筛选"><option value="">全部状态</option><option value="success">成功</option><option value="invalid">输出无效</option><option value="failed">请求失败</option><option value="interrupted">中断</option><option value="pending">待处理</option><option value="processing">处理中</option></select></div>
+<small id="filtered-count"></small>
+<div class="table-wrap"><table><thead><tr><th>编号</th><th>评论</th><th>大类</th><th>主题</th><th>严重程度</th><th>状态</th></tr></thead><tbody id="result-rows"></tbody></table></div>
+<p class="hint">点击任意行查看原文、关键词结果、完整 AI 结果及依据。统计面板不随列表筛选改变。</p>
+</section>
+<section class="card" id="detail" hidden><h2 id="detail-title">评论详情</h2><div class="detail-review" id="detail-review"></div><div class="comparison"><div><h3>关键词规则</h3><div class="baseline-value" id="detail-baseline"></div><p class="hint">固定关键词基线，只判断大类；无法判断严重程度或提取需求。</p></div><div><h3>完整 AI 分析</h3><div id="detail-ai"></div></div></div><details id="raw-section" hidden><summary>查看原始响应与请求记录</summary><pre id="detail-raw"></pre></details></section>
+<div class="empty" id="empty-state">从一条评论开始，或导入 CSV。<br>完成后，在这里查看结果、汇总和原文依据。</div>
+<footer class="footer">V5 分析流程 · 四个问题大类 / 十个固定主题。结果用于辅助反馈整理，需结合原评论判断。<br>个人本地版本；评估分数属于已保存的小规模实验，不代表当前输入的真实准确率。</footer>
+</main></div><div id="toast" role="status" aria-live="polite" hidden></div>
+<script>
+const $ = id => document.getElementById(id);
+const local = location.protocol === 'file:';
+const categories = {BUG:'故障 / 性能', ACCOUNT:'账户访问', PAYMENT:'支付 / 收费', FEATURE_UX:'功能 / 体验'};
+const topics = {ACCOUNT_ACCESS:'账户访问',CHARGES_REFUNDS:'扣费与退款',PRICING_SUBSCRIPTION:'价格与订阅',CRASH_PERFORMANCE:'崩溃与性能',FUNCTION_FAILURE:'功能失效',NOTIFICATIONS:'通知与提醒',INSTALL_REMOVAL:'安装与卸载',USABILITY_DESIGN:'易用性与设计',FEATURE_REQUEST:'新功能建议',OTHER:'其他'};
+const severityNames = {high:'高',medium:'中',low:'低'};
+const statusNames = {success:'成功',pending:'待处理',processing:'处理中',invalid:'输出无效',failed:'请求失败',interrupted:'中断',running:'运行中',pausing:'正在暂停',paused:'已暂停',completed:'已完成'};
+const ruleTerms = [
+['PAYMENT',['charge','charged','billing','billed','payment','paid','pay','refund','subscription','renew','renewal','invoice','price','cost','card','voucher','checkout','premium']],
+['ACCOUNT',['sign in','signin','log in','login','logged out','signed out','password','account','profile','verification','verify','email address','face id','registered','reset link']],
+['BUG',['crash','closes','force quit','spinning','stops moving',"won't load",'disappears','cuts out','blank page','stuck','hang','hangs','sent me back','takes forever',"doesn't work",'does not work','stopped','jumps back',"won't open",'won’t load']],
+['FEATURE_UX',['would help','could you','i wish','it would','could add','add a way','would be','easier','too many taps','tiny','hard to','crowded','choose which','save a','offline use','side by side','higher-contrast','sort saved','one-handed']]];
+let job = null, selectedRow = 0, imported = [], importedTitle = '', pollTimer, toastTimer, canAI = false, busy = false;
+let remembered = '';
+try { remembered = localStorage.getItem('feedback-job') || ''; } catch (_) {}
+function el(tag, text, className) { const node = document.createElement(tag); if(text !== undefined) node.textContent = text; if(className) node.className = className; return node; }
+function notify(message) { $('toast').textContent = message; $('toast').hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => $('toast').hidden = true, 7000); }
+function rule(text) { const normalized = text.toLowerCase().replaceAll('-', ' '); for(const [category, words] of ruleTerms) for(const word of words) { const escaped = word.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); if(new RegExp('\\b'+escaped+'\\b').test(normalized)) return category; } return 'FEATURE_UX'; }
+async function request(path, data, binary = false) {
+  const headers = {'X-App-Token':document.querySelector('meta[name="app-token"]').content};
+  let code = ''; try { code = sessionStorage.getItem('feedback-access') || ''; } catch (_) {}
+  if(code) headers['X-Access-Code'] = code;
+  if(data !== undefined) headers['Content-Type'] = 'application/json';
+  let response = await fetch(path, {method:data === undefined ? 'GET':'POST',headers,body:data === undefined ? undefined : JSON.stringify(data)});
+  if(response.status === 403) {
+    const error = await response.json();
+    if(error.access_code_required) {
+      const entered = window.prompt('请输入运行此应用的人提供的局域网访问码：');
+      if(entered) { try { sessionStorage.setItem('feedback-access',entered); } catch (_) {} headers['X-Access-Code']=entered;
+        response = await fetch(path,{method:data === undefined ? 'GET':'POST',headers,body:data === undefined ? undefined : JSON.stringify(data)});
+      } else throw new Error('需要访问码。');
+    } else throw new Error(error.error || '请刷新页面。');
+  }
+  if(!response.ok) { let error; try { error=await response.json(); } catch(_){} throw new Error(error?.error || '本地服务无法响应，请确认启动窗口仍然打开。'); }
+  return binary ? response.blob() : response.json();
+}
+function switchTab(batch) { $('single-panel').hidden=batch; $('batch-panel').hidden=!batch; $('single-tab').setAttribute('aria-selected',String(!batch)); $('batch-tab').setAttribute('aria-selected',String(batch)); }
+$('single-tab').onclick=()=>switchTab(false); $('batch-tab').onclick=()=>switchTab(true);
+$('review').oninput=()=>{$('character-count').textContent=`${$('review').value.length} / 2000`;};
+$('use-example').onclick=()=>{$('review').value='I cancelled my subscription, but I was charged again.'; $('review').oninput(); $('review').focus();};
+function buttons() { $('analyse-single').disabled=busy || !canAI; $('analyse-batch').disabled=busy || !canAI || !imported.length; $('rule-single').disabled=busy; $('rule-batch').disabled=busy || local || !imported.length; }
+function showJob(next) { job=next; if(selectedRow>=job.rows.length) selectedRow=0; try { if(!local) localStorage.setItem('feedback-job',job.id); } catch(_){} renderJob(); schedulePoll(); }
+async function create(reviews,title,method) {
+  if(!reviews.length || reviews.some(r=>!r.review.trim())) return notify('请先输入评论。');
+  if(local) {
+    if(method!=='rule') return notify('请双击启动入口，打开完整本地版本。');
+    showJob({id:'offline',title:'离线关键词分类（不保存）',method:'rule',created_at:new Date().toISOString(),status:'completed',rows:reviews.map(r=>({...r,baseline_category:rule(r.review),status:'success',result:null,error:'',attempts:[]}))}); return;
+  }
+  busy=true; buttons();
+  try { selectedRow=0; showJob(await request('/api/jobs',{reviews,title,method})); await history(); }
+  catch(error) { notify(error.message); } finally { busy=false; buttons(); }
+}
+$('analyse-single').onclick=()=>create([{review_id:'1',review:$('review').value}], '单条评论分析','ai');
+$('rule-single').onclick=()=>create([{review_id:'1',review:$('review').value}], '单条关键词分类','rule');
+$('analyse-batch').onclick=()=>{if(confirm(`将分析 ${imported.length} 条评论，每条调用一次模型并使用 API 余额。是否开始？`)) create(imported,importedTitle,'ai');};
+$('rule-batch').onclick=()=>create(imported,importedTitle+' · 关键词','rule');
+$('csv-file').onchange=async()=>{
+  imported=[]; buttons(); $('csv-preview').hidden=true;
+  const file=$('csv-file').files[0]; if(!file) return;
+  if(file.size>2*1024*1024) return notify('CSV 文件超过 2 MB，请拆分。');
+  try {
+    const text=new TextDecoder('utf-8',{fatal:true}).decode(await file.arrayBuffer());
+    const preview=await request('/api/import',{csv:text});
+    imported=preview.reviews; importedTitle=file.name;
+    const box=$('csv-preview'); box.replaceChildren(el('strong',`已读入 ${preview.count} 条有效评论。尚未调用 AI。`));
+    box.append(el('p','预览：'+imported[0].review.slice(0,150)));
+    if(preview.errors.length) { box.append(el('p',`${preview.errors.length} 行未导入。以下行不会参与分析：`)); const list=el('ul'); preview.errors.forEach(e=>list.append(el('li',e))); box.append(list); }
+    box.hidden=false;
+  } catch(error) { notify(error instanceof TypeError ? '请使用 UTF-8 编码的 CSV 文件。' : error.message); }
+  buttons();
+};
+function saveBlob(blob,filename) { const url=URL.createObjectURL(blob); const link=el('a'); link.href=url; link.download=filename; document.body.append(link); link.click(); link.remove(); setTimeout(()=>URL.revokeObjectURL(url),1000); }
+$('download-template').onclick=()=>saveBlob(new Blob(['\ufeffreview_id,review\r\nEX01,"The app freezes whenever I open my saved items."\r\nEX02,"Please add a dark mode option."\r\n'],{type:'text/csv;charset=utf-8'}),'synthetic_format_examples.csv');
+async function history() {
+  if(local) return;
+  const data=await request('/api/jobs'); const target=$('history'); target.replaceChildren();
+  if(!data.jobs.length) target.append(el('div','暂无分析记录','muted'));
+  for(const item of data.jobs) { const button=el('button',undefined,item.id===job?.id?'active':''); button.append(el('strong',item.title),el('small',`${new Date(item.created_at).toLocaleString()} · ${statusNames[item.status] || item.status}`),el('small',`${item.done}/${item.total} 条 · ${item.method==='ai'?'AI':'关键词'}`)); button.onclick=async()=>{try {selectedRow=0; showJob(await request('/api/jobs/'+item.id)); await history();}catch(e){notify(e.message);}}; target.append(button); }
+}
+$('refresh-history').onclick=()=>history().catch(e=>notify(e.message));
+function bars(target,counts,names,total,order) {
+  const box=$(target); box.replaceChildren(); const keys=order || Object.keys(counts).sort((a,b)=>counts[b]-counts[a]);
+  if(!total) {box.append(el('small','尚无有效结果')); return;}
+  for(const key of keys) {const count=counts[key] || 0; if(!order && !count) continue; const row=el('div',undefined,'bar-row'); const label=el('div',undefined,'bar-label'); label.append(el('span',names[key] || key),el('span',`${count} · ${Math.round(count/total*100)}%`)); const track=el('div',undefined,'track'); const fill=el('div',undefined,'fill '+key); fill.style.width=`${count/total*100}%`; track.append(fill); row.append(label,track); box.append(row);}
+}
+function renderJob() {
+  if(!job) return;
+  $('overview').hidden=false; $('results').hidden=false; $('empty-state').hidden=true;
+  $('job-title').textContent=job.title; $('job-meta').textContent=`${new Date(job.created_at).toLocaleString()} · ${job.method==='ai'?'完整 AI 分析':'关键词分类'} · ${statusNames[job.status] || job.status}`;
+  const rows=job.rows; const success=rows.filter(r=>r.status==='success'); const failures=rows.filter(r=>['failed','invalid','interrupted'].includes(r.status)); const done=success.length+failures.length;
+  const input=rows.reduce((sum,r)=>sum+r.attempts.reduce((n,a)=>n+(a.input_tokens||0),0),0), output=rows.reduce((sum,r)=>sum+r.attempts.reduce((n,a)=>n+(a.output_tokens||0),0),0);
+  $('progress-fill').style.width=`${done/rows.length*100}%`; $('progress').setAttribute('aria-valuenow',String(Math.round(done/rows.length*100)));
+  $('progress-text').textContent=`已处理 ${done}/${rows.length} 条 · 有效 ${success.length} · 失败/无效/中断 ${failures.length}${job.status==='pausing'?' · 当前请求结束后暂停':''}`;
+  $('stat-total').textContent=rows.length; $('stat-success').textContent=success.length; $('stat-failed').textContent=`${failures.length} 条需要关注`;
+  $('stat-high').textContent=job.method==='ai'?success.filter(r=>r.result?.severity==='high').length:'—';
+  $('stat-tokens').textContent=(input+output).toLocaleString(); $('token-breakdown').textContent=`输入 ${input.toLocaleString()} / 输出 ${output.toLocaleString()}`;
+  const c={},t={},s={}; for(const row of success) {const category=job.method==='ai'?row.result?.category:row.baseline_category; if(category)c[category]=(c[category]||0)+1; if(row.result){t[row.result.issue_topic]=(t[row.result.issue_topic]||0)+1;s[row.result.severity]=(s[row.result.severity]||0)+1;}}
+  bars('category-bars',c,categories,success.length,Object.keys(categories)); bars('topic-bars',t,topics,job.method==='ai'?success.length:0); bars('severity-bars',s,severityNames,job.method==='ai'?success.length:0,['high','medium','low']);
+  const different=success.filter(r=>r.result && r.result.category!==r.baseline_category).length;
+  $('summary-note').textContent=job.method==='ai'?`分布仅统计 ${success.length} 条有效 AI 结果；失败项不归入任何类别。${different} 条与关键词分类不同，分歧不等于模型错误。Token 包含已保存的重试用量；未知计费用量以服务商记录为准。`:'关键词模式只提供大类；没有严重程度、需求、主题或证据，也不调用模型。';
+  const running=['running','pausing'].includes(job.status); $('pause-job').hidden=job.method!=='ai'||!running; $('pause-job').disabled=job.status==='pausing';
+  $('resume-job').hidden=job.method!=='ai'||running||!rows.some(r=>r.status==='pending'); $('retry-job').hidden=job.method!=='ai'||running||!failures.length;
+  $('export-csv').disabled=local; $('export-json').disabled=local;
+  renderTable(); renderDetail();
+}
+function renderTable() {
+  if(!job) return; const query=$('filter-text').value.trim().toLowerCase(); const body=$('result-rows'); body.replaceChildren(); let visible=0;
+  job.rows.forEach((row,index)=>{
+    const value=row.result || {}; const category=job.method==='ai'?value.category:row.baseline_category;
+    if($('filter-category').value && category!==$('filter-category').value)return;
+    if($('filter-topic').value && value.issue_topic!==$('filter-topic').value)return;
+    if($('filter-severity').value && value.severity!==$('filter-severity').value)return;
+    if($('filter-status').value && row.status!==$('filter-status').value)return;
+    if(query && ![row.review,value.user_need || '',value.evidence || ''].join(' ').toLowerCase().includes(query))return;
+    visible++; const tr=el('tr',undefined,index===selectedRow?'selected':''); tr.tabIndex=0;
+    const cells=[row.review_id,row.review.length>110?row.review.slice(0,110)+'…':row.review,category?`${categories[category]} (${category})`:'—',topics[value.issue_topic] || '—'];
+    cells.forEach((text,n)=>tr.append(el('td',text,n===1?'review-cell':n===0?'id-cell':'')));
+    const severity=el('td'); severity.append(el('span',severityNames[value.severity] || '—','pill '+(value.severity || ''))); tr.append(severity);
+    const status=el('td'); status.append(el('span',statusNames[row.status] || row.status,'pill '+row.status));tr.append(status);
+    const select=()=>{selectedRow=index;renderTable();renderDetail();$('detail').scrollIntoView({behavior:'smooth',block:'nearest'});};tr.onclick=select;tr.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select();}};body.append(tr);
+  });
+  $('filtered-count').textContent=`显示 ${visible}/${job.rows.length} 条`;
+  if(!visible) {const tr=el('tr');const td=el('td','没有符合筛选条件的评论','empty');td.colSpan=6;tr.append(td);body.append(tr);}
+}
+function renderDetail() {
+  if(!job?.rows.length)return; const row=job.rows[selectedRow]; $('detail').hidden=false; $('detail-title').textContent=`评论详情 · ${row.review_id}`; $('detail-review').textContent=row.review; $('detail-baseline').textContent=`${categories[row.baseline_category]} (${row.baseline_category})`;
+  const target=$('detail-ai');target.replaceChildren();
+  if(row.result) {
+    const value=row.result; target.append(el('div',`${categories[value.category]} (${value.category})`,'ai-value'));
+    const grid=el('div',undefined,'fields');
+    for(const [label,text,cls] of [['固定主题',`${topics[value.issue_topic]} (${value.issue_topic})`,''],['严重程度',`${severityNames[value.severity]} (${value.severity})`,''],['用户需求',value.user_need,'wide'],['原文依据',value.evidence,'wide']]) {const field=el('div',undefined,'field '+cls);field.append(el('small',label),el('div',text,label==='原文依据'?'quote':''));grid.append(field);}target.append(grid,el('p','已通过字段及逐字引用检查；是否正确理解评论仍需要人工判断。','hint'));
+  } else target.append(el('p',job.method==='rule'?'本次只运行关键词规则，未调用 AI。':row.error || (row.status==='processing'?'模型正在分析这条评论…':'等待处理。'),'muted'));
+  $('raw-section').hidden=!row.attempts.length; $('detail-raw').textContent=JSON.stringify(row.attempts,null,2);
+}
+function schedulePoll() {clearTimeout(pollTimer);if(!job || !['running','pausing'].includes(job.status) || local)return;pollTimer=setTimeout(async()=>{try{const next=await request('/api/jobs/'+job.id);showJob(next);if(!['running','pausing'].includes(next.status))await history();}catch(e){notify(e.message);pollTimer=setTimeout(schedulePoll,3000);}},1300);}
+async function action(name) {if(!job)return; if(name==='retry' && !confirm('将重新调用失败、无效或中断项。中断请求可能已经计费，重试会增加 API 用量。待处理项也会继续。是否开始？'))return;
+  try {showJob(await request(`/api/jobs/${job.id}/${name}`,{}));await history();}catch(e){notify(e.message);}}
+$('pause-job').onclick=()=>action('pause');$('resume-job').onclick=()=>action('resume');$('retry-job').onclick=()=>action('retry');
+for(const name of ['csv','json']) $('export-'+name).onclick=async()=>{try{saveBlob(await request(`/api/jobs/${job.id}/${name}`,undefined,true),`feedback-${job.id.slice(0,8)}.${name}`);}catch(e){notify(e.message);}};
+for(const [code,label] of Object.entries(categories)){const option=el('option',label+' ('+code+')');option.value=code;$('filter-category').append(option);}
+for(const [code,label] of Object.entries(topics)){const option=el('option',label);option.value=code;$('filter-topic').append(option);}
+for(const id of ['filter-text','filter-category','filter-topic','filter-severity','filter-status'])$(id).addEventListener('input',renderTable);
+async function init() {
+  if(local) {canAI=false;$('connection-text').textContent='HTML 离线预览';$('service-note').textContent='这是文件预览，只能运行单条关键词分类，不会保存。请双击「启动反馈分析.command」打开完整版本。';$('service-note').hidden=false;$('batch-tab').disabled=true;$('refresh-history').disabled=true;buttons();return;}
+  try {const status=await request('/api/status');canAI=status.ai_ready;$('connection-text').textContent=canAI?'本地服务已连接 · 密钥已配置':'本地服务已连接 · 未配置密钥';$('connection').classList.toggle('ready',canAI);const messages=[...status.warnings];if(!canAI)messages.unshift('AI 密钥未配置。关键词功能可用；请关闭服务并双击启动入口，在终端输入密钥。');if(messages.length){$('service-note').textContent=messages.join(' ');$('service-note').hidden=false;}await history();if(remembered){try{showJob(await request('/api/jobs/'+remembered));await history();}catch(_){}}}
+  catch(e){$('connection-text').textContent='本地服务未连接';$('service-note').textContent=e.message;$('service-note').hidden=false;}
+  buttons();
+}
+init();
+</script>
+</body>
+</html>

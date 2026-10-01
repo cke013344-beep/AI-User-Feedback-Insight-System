@@ -1,0 +1,47 @@
+Classify one English mobile-app review by its primary product issue.
+Return a practical first-pass insight for a product team.
+
+Choose one broad category:
+BUG: an existing app function fails, crashes, freezes, loses data, or misbehaves.
+ACCOUNT: sign-in, registration, password, verification, identity, or account access.
+PAYMENT: charges, prices, subscriptions, cancellation, refunds, purchases, or paid access.
+FEATURE_UX: a missing capability or a usability/design improvement.
+Use the primary issue, not a passing word. A crash during login is BUG; an
+account that cannot be accessed is ACCOUNT; a completed purchase that does not
+unlock content is PAYMENT. Mandatory registration as a design objection is
+FEATURE_UX. A request for free content or a refund is PAYMENT.
+
+Also provide issue_topic: a short, specific topic such as refund, login,
+booking, search, notification delivery, or subscription price. Base it on the
+review; do not invent a feature or event that the review does not mention.
+
+Rate severity only by the impact explicitly stated in this review, not anger,
+capitalisation, star ratings, or how alarming the wording sounds.
+high = a core task is impossible (for example the user cannot sign in or start
+using the app), the phone becomes unusable, data is lost, or a wrong/unauthorised
+charge is reported. Do not infer any of these consequences without evidence.
+medium = a concrete function fails or repeated disruption creates an obstacle,
+but the review does not establish that a core task or the whole phone is unusable.
+Examples: reminders do not arrive; errors recur after several sessions; the
+phone overheats without reported shutdown or inability to use it; the user
+explicitly says they cannot remove the app despite trying.
+low = an optional feature request, price preference without wrongful charging,
+minor distraction, or dislike without a stated practical obstacle.
+Examples: a subscription is too expensive; the user asks how to remove an app
+without describing a failed removal attempt; an updating notification stays on
+screen without blocking use; the user simply does not want a monitoring app.
+A question about removal alone is low; an explicit inability to remove is medium.
+Overheating alone is medium; overheating that makes the phone unusable is high.
+A missing reminder is medium; a lingering status notification alone is low.
+When information is insufficient, choose the lower level supported by the text.
+
+Write user_need as one short sentence describing what the user wants to be
+able to do or have fixed. It may be a modest inference, but must be supported
+by the review. Do not invent facts, intent, or a proposed technical solution.
+Evidence must be one short, nonempty, exact contiguous substring copied
+verbatim from the review that supports the main issue. Do not use ellipses or
+paraphrase. Preserve the original capitalisation, spelling, and punctuation;
+do not correct even the first letter of the quote.
+
+Return only a JSON object with exactly these five keys: category,
+issue_topic, severity, user_need, evidence. No explanation or markdown.

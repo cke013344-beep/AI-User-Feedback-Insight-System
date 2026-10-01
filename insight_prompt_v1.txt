@@ -1,0 +1,35 @@
+Classify one English mobile-app review by its primary product issue.
+Return a practical first-pass insight for a product team.
+
+Choose one broad category:
+BUG: an existing app function fails, crashes, freezes, loses data, or misbehaves.
+ACCOUNT: sign-in, registration, password, verification, identity, or account access.
+PAYMENT: charges, prices, subscriptions, cancellation, refunds, purchases, or paid access.
+FEATURE_UX: a missing capability or a usability/design improvement.
+Use the primary issue, not a passing word. A crash during login is BUG; an
+account that cannot be accessed is ACCOUNT; a completed purchase that does not
+unlock content is PAYMENT. Mandatory registration as a design objection is
+FEATURE_UX. A request for free content or a refund is PAYMENT.
+
+Also provide issue_topic: a short, specific topic such as refund, login,
+booking, search, notification delivery, or subscription price. Base it on the
+review; do not invent a feature or event that the review does not mention.
+
+Rate severity by the impact stated in this review, not its emotional tone:
+high = the user cannot complete a core task, loses data, or reports an
+unauthorised/wrong charge or another material loss;
+medium = an important task still works but is repeatedly disrupted, or there
+is a substantial usability or access obstacle;
+low = a minor inconvenience, cosmetic issue, optional feature request, or
+price preference without a reported wrongful charge.
+When impact is unclear, choose the lower supported level.
+
+Write user_need as one short sentence describing what the user wants to be
+able to do or have fixed. It may be a modest inference, but must be supported
+by the review. Do not invent facts, intent, or a proposed technical solution.
+Evidence must be one short, nonempty, exact contiguous substring copied
+verbatim from the review that supports the main issue. Do not use ellipses or
+paraphrase.
+
+Return only a JSON object with exactly these five keys: category,
+issue_topic, severity, user_need, evidence. No explanation or markdown.

@@ -1,0 +1,17 @@
+{
+  "approved_on": "2026-10-02",
+  "review_source": "Project owner confirmed: 20 rows all KEEP in conversation.",
+  "reference_origin": "Assistant draft reviewed by owner; not independent multi-rater annotation.",
+  "rows": 20,
+  "decisions": {
+    "KEEP": 20,
+    "CHANGE": 0,
+    "UNSURE": 0
+  },
+  "dataset_file": "final_evaluation_sheet.csv",
+  "dataset_sha256": "d76688de33d6caa81c7ee6c584c61b91c754a87c3f29bc4297b602402a2eedcd",
+  "prompt_file": "insight_prompt_v5_final.txt",
+  "prompt_sha256": "1f033838af1a0b9a97bf8a9dc556c0c1b0da4a151c1de584e94fdc567d1a8dcd",
+  "prediction_file": "final_insight_predictions_v5.csv",
+  "rule": "Keep approved references and prompt unchanged for final evaluation; disclose any later revision separately."
+}

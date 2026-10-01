@@ -1,0 +1,141 @@
+review_id,reference_category,category,issue_topic,severity,user_need,evidence,valid_schema,latency_ms,input_tokens,output_tokens,raw_output,provider,model,dataset_sha256,prompt_sha256
+R005,ACCOUNT,ACCOUNT,login,high,the user wants to be able to access the app to look at their pictures,i forgot my pin and now i cant open the app,1,1938,472,64,"{
+  ""category"": ""ACCOUNT"",
+  ""issue_topic"": ""login"",
+  ""severity"": ""high"",
+  ""user_need"": ""the user wants to be able to access the app to look at their pictures"",
+  ""evidence"": ""i forgot my pin and now i cant open the app""
+}",openrouter,openai/gpt-4o-mini,4d3b42aa22e3ba69772fd311280717fa5f318299df02513774c5d4a40522595c,ebe86b5858125078a5d8f19b2b3a9762222d56aa9a0c621a8c35f8fddf10c4e1
+R007,PAYMENT,FEATURE_UX,subscription,medium,the user wants a free version with advertisements,I would have been happy with a version with advertisements,1,1432,487,58,"{
+  ""category"": ""FEATURE_UX"",
+  ""issue_topic"": ""subscription"",
+  ""severity"": ""medium"",
+  ""user_need"": ""the user wants a free version with advertisements"",
+  ""evidence"": ""I would have been happy with a version with advertisements""
+}",openrouter,openai/gpt-4o-mini,4d3b42aa22e3ba69772fd311280717fa5f318299df02513774c5d4a40522595c,ebe86b5858125078a5d8f19b2b3a9762222d56aa9a0c621a8c35f8fddf10c4e1
+R008,FEATURE_UX,FEATURE_UX,usage limit,low,the option of setting a limit on the number of times I can open an app in a day,the option of setting a limit on the number of times I can open an app in a day,1,2767,469,79,"{
+  ""category"": ""FEATURE_UX"",
+  ""issue_topic"": ""usage limit"",
+  ""severity"": ""low"",
+  ""user_need"": ""the option of setting a limit on the number of times I can open an app in a day"",
+  ""evidence"": ""the option of setting a limit on the number of times I can open an app in a day""
+}",openrouter,openai/gpt-4o-mini,4d3b42aa22e3ba69772fd311280717fa5f318299df02513774c5d4a40522595c,ebe86b5858125078a5d8f19b2b3a9762222d56aa9a0c621a8c35f8fddf10c4e1
+R011,FEATURE_UX,FEATURE_UX,removal,low,the user wants to remove the app from their phone,How do i get this off my ph,1,1429,447,59,"{
+  ""category"": ""FEATURE_UX"",
+  ""issue_topic"": ""removal"",
+  ""severity"": ""low"",
+  ""user_need"": ""the user wants to remove the app from their phone"",
+  ""evidence"": ""How do i get this off my ph""
+}",openrouter,openai/gpt-4o-mini,4d3b42aa22e3ba69772fd311280717fa5f318299df02513774c5d4a40522595c,ebe86b5858125078a5d8f19b2b3a9762222d56aa9a0c621a8c35f8fddf10c4e1
+R012,ACCOUNT,ACCOUNT,password reset,high,receive my password reset email,I can't receive my password reset email,1,1639,486,51,"{
+  ""category"": ""ACCOUNT"",
+  ""issue_topic"": ""password reset"",
+  ""severity"": ""high"",
+  ""user_need"": ""receive my password reset email"",
+  ""evidence"": ""I can't receive my password reset email""
+}",openrouter,openai/gpt-4o-mini,4d3b42aa22e3ba69772fd311280717fa5f318299df02513774c5d4a40522595c,ebe86b5858125078a5d8f19b2b3a9762222d56aa9a0c621a8c35f8fddf10c4e1
+R014,BUG,BUG,app performance,high,want the app to not cause mobile overheating,my mobile gone extremely heat up,1,1432,463,53,"{
+  ""category"": ""BUG"",
+  ""issue_topic"": ""app performance"",
+  ""severity"": ""high"",
+  ""user_need"": ""want the app to not cause mobile overheating"",
+  ""evidence"": ""my mobile gone extremely heat up""
+}",openrouter,openai/gpt-4o-mini,4d3b42aa22e3ba69772fd311280717fa5f318299df02513774c5d4a40522595c,ebe86b5858125078a5d8f19b2b3a9762222d56aa9a0c621a8c35f8fddf10c4e1
+R030,BUG,BUG,notification delivery,medium,be able to receive daily reminders,my daily reminder isn't actually working,1,2150,468,51,"{
+  ""category"": ""BUG"",
+  ""issue_topic"": ""notification delivery"",
+  ""severity"": ""medium"",
+  ""user_need"": ""be able to receive daily reminders"",
+  ""evidence"": ""my daily reminder isn't actually working""
+}",openrouter,openai/gpt-4o-mini,4d3b42aa22e3ba69772fd311280717fa5f318299df02513774c5d4a40522595c,ebe86b5858125078a5d8f19b2b3a9762222d56aa9a0c621a8c35f8fddf10c4e1
+R031,FEATURE_UX,BUG,app deletion,high,be able to delete the app from the phone,you can never get it off your phone,1,1412,463,56,"{
+  ""category"": ""BUG"",
+  ""issue_topic"": ""app deletion"",
+  ""severity"": ""high"",
+  ""user_need"": ""be able to delete the app from the phone"",
+  ""evidence"": ""you can never get it off your phone""
+}",openrouter,openai/gpt-4o-mini,4d3b42aa22e3ba69772fd311280717fa5f318299df02513774c5d4a40522595c,ebe86b5858125078a5d8f19b2b3a9762222d56aa9a0c621a8c35f8fddf10c4e1
+R037,PAYMENT,,,,,,0,2422,505,56,"{
+  ""category"": ""PAYMENT"",
+  ""issue_topic"": ""subscription"",
+  ""severity"": ""high"",
+  ""user_need"": ""to avoid unexpected charges for a subscription"",
+  ""evidence"": ""It had charged me $45 for a monthly subscription""
+}",openrouter,openai/gpt-4o-mini,4d3b42aa22e3ba69772fd311280717fa5f318299df02513774c5d4a40522595c,ebe86b5858125078a5d8f19b2b3a9762222d56aa9a0c621a8c35f8fddf10c4e1
+R063,FEATURE_UX,FEATURE_UX,preinstalled apps,low,to remove preinstalled apps from the phone,not allow me to rid my phone of it,1,1277,451,59,"{
+  ""category"": ""FEATURE_UX"",
+  ""issue_topic"": ""preinstalled apps"",
+  ""severity"": ""low"",
+  ""user_need"": ""to remove preinstalled apps from the phone"",
+  ""evidence"": ""not allow me to rid my phone of it""
+}",openrouter,openai/gpt-4o-mini,4d3b42aa22e3ba69772fd311280717fa5f318299df02513774c5d4a40522595c,ebe86b5858125078a5d8f19b2b3a9762222d56aa9a0c621a8c35f8fddf10c4e1
+R064,BUG,BUG,Bluetooth connections,high,user wants the app to stop interfering with phone functionality,Stops phone from working & mucks up Bluetooth connections,1,2308,445,59,"{
+  ""category"": ""BUG"",
+  ""issue_topic"": ""Bluetooth connections"",
+  ""severity"": ""high"",
+  ""user_need"": ""user wants the app to stop interfering with phone functionality"",
+  ""evidence"": ""Stops phone from working & mucks up Bluetooth connections""
+}",openrouter,openai/gpt-4o-mini,4d3b42aa22e3ba69772fd311280717fa5f318299df02513774c5d4a40522595c,ebe86b5858125078a5d8f19b2b3a9762222d56aa9a0c621a8c35f8fddf10c4e1
+R069,PAYMENT,PAYMENT,subscription price,medium,find a more affordable pricing option for sleepcasts,the price is too high compared to free sleep aid apps,1,1694,481,60,"{
+  ""category"": ""PAYMENT"",
+  ""issue_topic"": ""subscription price"",
+  ""severity"": ""medium"",
+  ""user_need"": ""find a more affordable pricing option for sleepcasts"",
+  ""evidence"": ""the price is too high compared to free sleep aid apps""
+}",openrouter,openai/gpt-4o-mini,4d3b42aa22e3ba69772fd311280717fa5f318299df02513774c5d4a40522595c,ebe86b5858125078a5d8f19b2b3a9762222d56aa9a0c621a8c35f8fddf10c4e1
+R078,ACCOUNT,ACCOUNT,login,high,The user wants to sign in without re-registering in the app.,Why is there no way to sign and for the app to recognize that you have my payment information?,1,1532,486,70,"{
+  ""category"": ""ACCOUNT"",
+  ""issue_topic"": ""login"",
+  ""severity"": ""high"",
+  ""user_need"": ""The user wants to sign in without re-registering in the app."",
+  ""evidence"": ""Why is there no way to sign and for the app to recognize that you have my payment information?""
+}",openrouter,openai/gpt-4o-mini,4d3b42aa22e3ba69772fd311280717fa5f318299df02513774c5d4a40522595c,ebe86b5858125078a5d8f19b2b3a9762222d56aa9a0c621a8c35f8fddf10c4e1
+R080,FEATURE_UX,FEATURE_UX,mandatory registration,medium,User wants to opt out of the monitoring program.,Didn't ask for this monitoring program.,1,1384,447,56,"{
+  ""category"": ""FEATURE_UX"",
+  ""issue_topic"": ""mandatory registration"",
+  ""severity"": ""medium"",
+  ""user_need"": ""User wants to opt out of the monitoring program."",
+  ""evidence"": ""Didn't ask for this monitoring program.""
+}",openrouter,openai/gpt-4o-mini,4d3b42aa22e3ba69772fd311280717fa5f318299df02513774c5d4a40522595c,ebe86b5858125078a5d8f19b2b3a9762222d56aa9a0c621a8c35f8fddf10c4e1
+R084,BUG,BUG,notification delivery,medium,stop receiving the persistent update notification,"I keep getting a notification the app is updating, which never goes away.",1,2507,456,59,"{
+  ""category"": ""BUG"",
+  ""issue_topic"": ""notification delivery"",
+  ""severity"": ""medium"",
+  ""user_need"": ""stop receiving the persistent update notification"",
+  ""evidence"": ""I keep getting a notification the app is updating, which never goes away.""
+}",openrouter,openai/gpt-4o-mini,4d3b42aa22e3ba69772fd311280717fa5f318299df02513774c5d4a40522595c,ebe86b5858125078a5d8f19b2b3a9762222d56aa9a0c621a8c35f8fddf10c4e1
+R100,ACCOUNT,ACCOUNT,registration,high,User wants to be able to register an account.,my Facebook and my email already had an account set up even though I literally just installed the app.,1,2609,481,66,"{
+  ""category"": ""ACCOUNT"",
+  ""issue_topic"": ""registration"",
+  ""severity"": ""high"",
+  ""user_need"": ""User wants to be able to register an account."",
+  ""evidence"": ""my Facebook and my email already had an account set up even though I literally just installed the app.""
+}",openrouter,openai/gpt-4o-mini,4d3b42aa22e3ba69772fd311280717fa5f318299df02513774c5d4a40522595c,ebe86b5858125078a5d8f19b2b3a9762222d56aa9a0c621a8c35f8fddf10c4e1
+R111,PAYMENT,PAYMENT,refund,high,wants a refund for an unauthorized charge,they took a payment from my account,1,1688,459,54,"{
+  ""category"": ""PAYMENT"",
+  ""issue_topic"": ""refund"",
+  ""severity"": ""high"",
+  ""user_need"": ""wants a refund for an unauthorized charge"",
+  ""evidence"": ""they took a payment from my account""
+}",openrouter,openai/gpt-4o-mini,4d3b42aa22e3ba69772fd311280717fa5f318299df02513774c5d4a40522595c,ebe86b5858125078a5d8f19b2b3a9762222d56aa9a0c621a8c35f8fddf10c4e1
+R112,ACCOUNT,ACCOUNT,registration,high,create an account with a .fr email address.,"Couldn't create an account, because apparently emails ending with .fr don't exist.",1,1434,488,61,"{
+  ""category"": ""ACCOUNT"",
+  ""issue_topic"": ""registration"",
+  ""severity"": ""high"",
+  ""user_need"": ""create an account with a .fr email address."",
+  ""evidence"": ""Couldn't create an account, because apparently emails ending with .fr don't exist.""
+}",openrouter,openai/gpt-4o-mini,4d3b42aa22e3ba69772fd311280717fa5f318299df02513774c5d4a40522595c,ebe86b5858125078a5d8f19b2b3a9762222d56aa9a0c621a8c35f8fddf10c4e1
+R117,PAYMENT,PAYMENT,refund,high,wants a refund,I would really appreciate a refund.,1,2357,466,49,"{
+  ""category"": ""PAYMENT"",
+  ""issue_topic"": ""refund"",
+  ""severity"": ""high"",
+  ""user_need"": ""wants a refund"",
+  ""evidence"": ""I would really appreciate a refund.""
+}",openrouter,openai/gpt-4o-mini,4d3b42aa22e3ba69772fd311280717fa5f318299df02513774c5d4a40522595c,ebe86b5858125078a5d8f19b2b3a9762222d56aa9a0c621a8c35f8fddf10c4e1
+R119,BUG,BUG,errors,medium,want to have the app work without errors,"Gives errors, but no explanation.",1,1943,453,53,"{
+  ""category"": ""BUG"",
+  ""issue_topic"": ""errors"",
+  ""severity"": ""medium"",
+  ""user_need"": ""want to have the app work without errors"",
+  ""evidence"": ""Gives errors, but no explanation.""
+}",openrouter,openai/gpt-4o-mini,4d3b42aa22e3ba69772fd311280717fa5f318299df02513774c5d4a40522595c,ebe86b5858125078a5d8f19b2b3a9762222d56aa9a0c621a8c35f8fddf10c4e1

@@ -1,0 +1,21 @@
+{
+  "rows": 20,
+  "category_correct": 19,
+  "topic_correct": 17,
+  "severity_correct": 16,
+  "valid_complete_outputs": 19,
+  "category_macro_f1": 0.9722222222222222,
+  "input_tokens": 25239,
+  "output_tokens": 875,
+  "mean_latency_ms": 1843,
+  "provider": [
+    "openrouter"
+  ],
+  "model": [
+    "openai/gpt-4o-mini"
+  ],
+  "dataset_sha256": "d76688de33d6caa81c7ee6c584c61b91c754a87c3f29bc4297b602402a2eedcd",
+  "prompt_sha256": "1f033838af1a0b9a97bf8a9dc556c0c1b0da4a151c1de584e94fdc567d1a8dcd",
+  "prediction_sha256": "442db797a91e63c5bb196ef3dfef06ff847841fb51c93b6e298420474e0ca571",
+  "manual_quality_status": "Owner gave qualitative acceptance in conversation on 2026-10-02; no independent per-field pass rates. H018 remains invalid and observed content limitations are retained."
+}
