@@ -14,7 +14,7 @@ import threading
 import urllib.error
 import uuid
 import webbrowser
-from datetime import datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import urlsplit
@@ -30,6 +30,33 @@ MAX_REVIEW = 2000
 MAX_ROWS = 500
 csv.field_size_limit(MAX_BODY)
 PROMPT_HASH = hashlib.sha256(INSTRUCTIONS.encode()).hexdigest()
+ENGLISH = json.loads((HERE / "ui_en.json").read_text(encoding="utf-8"))
+
+
+def english_message(text):
+    if text in ENGLISH:
+        return ENGLISH[text]
+    match = re.fullmatch(r"第 (\d+) 条评论需要 1–2000 个字符。", text)
+    if match:
+        return f"Review {match[1]} must contain 1 to 2000 characters."
+    match = re.fullmatch(r"CSV 第 (\d+) 行格式不完整，或评论为空/超过 2000 字符。", text)
+    if match:
+        return f"CSV row {match[1]} is incomplete, empty or exceeds 2000 characters."
+    match = re.fullmatch(r"无法读取历史文件 (.+)；原文件保留。", text)
+    if match:
+        return f"Cannot read history file {match[1]}. The original file was preserved."
+    return text
+
+
+def english_response(value, field=""):
+    # Translate interface diagnostics only; never translate user reviews or model evidence.
+    if isinstance(value, dict):
+        return {key: english_response(item, key) for key, item in value.items()}
+    if isinstance(value, list):
+        return [english_response(item, field) for item in value]
+    if isinstance(value, str) and field in {"error", "errors", "warnings", "title"}:
+        return english_message(value)
+    return value
 
 
 def now():
@@ -159,6 +186,23 @@ class Workspace:
                 self.start(job)
             return self.get(job["id"])
 
+    def report_period(self, job_id, data):
+        app = data.get("app_name")
+        if not isinstance(app, str) or not app.strip() or len(app) > 100:
+            raise ValueError("请填写应用名称（1–100字符）。")
+        try:
+            day = date.fromisoformat(data.get("report_week", ""))
+        except (TypeError, ValueError):
+            raise ValueError("请选择评论所属周的日期。")
+        with self.lock:
+            job = self.jobs.get(job_id)
+            if not job:
+                raise KeyError()
+            job["app_name"] = app.strip()
+            job["report_week"] = (day - timedelta(days=day.weekday())).isoformat()
+            self.save(job)
+            return self.get(job_id)
+
     def start(self, job):
         if self.active:
             raise ValueError("已有 AI 分析运行中，请等待当前请求完成。")
@@ -276,6 +320,8 @@ class Handler(BaseHTTPRequestHandler):
 
     def send(self, status, body, content_type="application/json; charset=utf-8", filename=None):
         if not isinstance(body, bytes):
+            if self.headers.get("X-App-Language", "") == "en":
+                body = english_response(body)
             body = json.dumps(body, ensure_ascii=False).encode("utf-8")
         self.send_response(status)
         self.send_header("Content-Type", content_type)
@@ -303,8 +349,10 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         path = urlsplit(self.path).path
-        if path in {"/", "/index.html"}:
-            body = (HERE / "index.html").read_text().replace("__APP_TOKEN__", self.server.token)
+        if path in {"/", "/index.html", "/en", "/index_en.html", "/zh"}:
+            english = path in {"/en", "/index_en.html"} or (path in {"/", "/index.html"} and self.server.language == "en")
+            filename = "index_en.html" if english else "index.html"
+            body = (HERE / filename).read_text().replace("__APP_TOKEN__", self.server.token)
             self.send(200, body.encode(), "text/html; charset=utf-8")
             return
         if not path.startswith("/api/") or not self.authorized():
@@ -325,6 +373,8 @@ class Handler(BaseHTTPRequestHandler):
                 if not match:
                     raise KeyError()
                 job = workspace.get(match[1])
+                if self.headers.get("X-App-Language", "") == "en":
+                    job = english_response(job)
                 if match[2] == "csv":
                     self.send(200, csv_export(job), "text/csv; charset=utf-8", f"feedback-{match[1][:8]}.csv")
                 elif match[2] == "json":
@@ -350,6 +400,8 @@ class Handler(BaseHTTPRequestHandler):
                 result = parse_csv(data.get("csv"))
             elif path == "/api/jobs":
                 result = workspace.create(data)
+            elif re.fullmatch(r"/api/jobs/[a-f0-9]{32}/report-period", path):
+                result = workspace.report_period(path.split("/")[3], data)
             else:
                 match = re.fullmatch(r"/api/jobs/([a-f0-9]{32})/(pause|resume|retry)", path)
                 if not match:
@@ -372,6 +424,7 @@ def main():
     parser.add_argument("--port", type=int, default=8000)
     parser.add_argument("--provider", choices=("auto", "openai", "openrouter"), default="auto")
     parser.add_argument("--model")
+    parser.add_argument("--language", choices=("zh", "en"), default="en")
     parser.add_argument("--open", action="store_true", help="Open the default browser")
     args = parser.parse_args()
     saved_key = DATA / ".openrouter_key"
@@ -388,32 +441,34 @@ def main():
     try:
         fcntl.flock(lock_file, fcntl.LOCK_EX | fcntl.LOCK_NB)
     except BlockingIOError:
-        print("本地应用已经运行，正在打开已运行的网页。")
+        print("The app is already running. Opening its page." if args.language == "en" else "本地应用已经运行，正在打开已运行的网页。")
         address_file = DATA / ".server_url"
         if args.open and address_file.exists():
             address = address_file.read_text().strip()
             if re.fullmatch(r"http://127\.0\.0\.1:[0-9]+", address):
-                webbrowser.open(address)
+                webbrowser.open(address + ("/en" if args.language == "en" else "/zh"))
         return
     try:
         server = ThreadingHTTPServer((args.host, args.port), Handler)
     except OSError as error:
-        raise SystemExit(f"无法启动：{error}。请关闭占用端口的程序或通过 --port 换端口。")
+        raise SystemExit(f"Could not start: {error}. Close the program using this port or select another port with --port." if args.language == "en" else f"无法启动：{error}。请关闭占用端口的程序或通过 --port 换端口。")
     server.workspace = Workspace(DATA / "runs", provider, model)
+    server.language = args.language
     server.token = secrets.token_urlsafe(24)
     server.local_only = args.host in {"127.0.0.1", "localhost", "::1"}
     server.access_code = None if server.local_only else secrets.token_urlsafe(12)
     address = f"http://127.0.0.1:{server.server_address[1]}"
     (DATA / ".server_url").write_text(address)
-    print(f"打开 {address}\n历史记录保存到 {DATA / 'runs'}\n保持此窗口打开；按 Ctrl+C 停止。", flush=True)
+    message = (f"Open {address}/en\nHistory: {DATA / 'runs'}\nKeep this window open; Ctrl+C stops the service." if args.language == "en" else f"打开 {address}/zh\n历史记录保存到 {DATA / 'runs'}\n保持此窗口打开；按 Ctrl+C 停止。")
+    print(message, flush=True)
     if server.access_code:
-        print(f"局域网访问码：{server.access_code}", flush=True)
+        print(f"LAN access code: {server.access_code}" if args.language == "en" else f"局域网访问码：{server.access_code}", flush=True)
     if args.open:
-        webbrowser.open(address)
+        webbrowser.open(address + ("/en" if args.language == "en" else "/zh"))
     try:
         server.serve_forever()
     except KeyboardInterrupt:
-        print("\n服务已停止。进行中的请求可能尚未保存；重启后会标记为中断，不会自动重发。")
+        print("\nService stopped. Unsaved requests will be marked interrupted on restart and will not be automatically resent." if args.language == "en" else "\n服务已停止。进行中的请求可能尚未保存；重启后会标记为中断，不会自动重发。")
     finally:
         server.server_close()
         lock_file.close()
